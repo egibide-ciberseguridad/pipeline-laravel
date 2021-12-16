@@ -17,7 +17,13 @@ pipeline {
     }
 
     stages {
-        stage('Docker') {
+        stage('Setup .env') {
+            steps {
+                sh "cp env-example .env"
+            }
+        }
+
+        stage('Docker Compose') {
             steps {
                 sh "docker-compose up -d"
             }
