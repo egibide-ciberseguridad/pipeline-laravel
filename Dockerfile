@@ -69,3 +69,5 @@ RUN npm install
 RUN npm run prod
 
 #RUN php artisan migrate:fresh --seed
+
+USER root
