@@ -17,9 +17,21 @@ pipeline {
             }
         }
 
-        stage('Docker Compose') {
+        stage('Docker Build') {
             steps {
-                sh "PORT=${publicPort} docker-compose up -d"
+                sh "docker-compose build"
+            }
+        }
+
+        stage('Docker Up') {
+            steps {
+                sh "PORT=${publicPort} docker-compose up -d --remove-orphans"
+            }
+        }
+
+        stage('Laravel seed') {
+            steps {
+                sh "docker-compose exec app php artisan migrate:fresh --seed"
             }
         }
     }
