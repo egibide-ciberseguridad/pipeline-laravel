@@ -1,14 +1,15 @@
 # Versiones de los contenedores
-
 PHP_VERSION=8.1
 MARIADB_VERSION=10.6
 
 # Variables de configuración para el entorno de desarrollo
-
 MYSQL_ROOT_PASSWORD=12345Abcde
 MYSQL_DATABASE=blog
 MYSQL_USER=blog
 MYSQL_PASSWORD=12345Abcde
+
+# Puerto para publicar la web
+PORT=8000
 
 # Prefijo para los contenedores
 COMPOSE_PROJECT_NAME=pipeline-laravel

@@ -7,12 +7,6 @@ pipeline {
     }
 
     environment {
-        // https://hub.docker.com/repositories
-        imageName = "widemos/laravel-blog"
-
-        // https://hub.docker.com/settings/security
-        registryCredential = 'docker-hub'
-
         publicPort = "80"
     }
 
@@ -25,7 +19,7 @@ pipeline {
 
         stage('Docker Compose') {
             steps {
-                sh "docker-compose up -d"
+                sh "PORT=${publicPort} docker-compose up -d"
             }
         }
     }
