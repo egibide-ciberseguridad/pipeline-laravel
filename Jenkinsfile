@@ -31,7 +31,7 @@ pipeline {
 
         stage('Laravel seed') {
             steps {
-                sh "docker-compose exec app php artisan migrate:fresh"
+                sh "docker-compose exec -T app php artisan migrate:fresh"
             }
         }
     }
