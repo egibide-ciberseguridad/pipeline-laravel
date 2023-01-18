@@ -59,7 +59,7 @@ RUN sed -i "s/^DB_DATABASE=.*$/DB_DATABASE=${MYSQL_DATABASE}/g" .env
 RUN sed -i "s/^DB_USERNAME=.*$/DB_USERNAME=${MYSQL_USER}/g" .env
 RUN sed -i "s/^DB_PASSWORD=.*$/DB_PASSWORD=${MYSQL_PASSWORD}/g" .env
 
-RUN sed -i 's|\\URL::forceScheme|//\\URL::forceScheme|g' app/Providers/AppServiceProvider.php
+#RUN sed -i 's|\\URL::forceScheme|//\\URL::forceScheme|g' app/Providers/AppServiceProvider.php
 
 USER root
 
