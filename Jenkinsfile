@@ -19,19 +19,19 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh "docker-compose build --no-cache"
+                sh "docker compose build --no-cache"
             }
         }
 
         stage('Docker Up') {
             steps {
-                sh "PORT=${publicPort} docker-compose up -d --remove-orphans"
+                sh "PORT=${publicPort} docker compose up -d --remove-orphans"
             }
         }
 
         stage('Laravel migrate') {
             steps {
-                sh "docker-compose exec -T app php artisan migrate:fresh"
+                sh "docker compose exec -T app php artisan migrate:fresh"
             }
         }
     }
