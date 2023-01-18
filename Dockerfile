@@ -66,7 +66,7 @@ RUN mkdir -p /var/www/.npm && chown -R www-data:www-data "/var/www/.npm"
 USER www-data
 
 RUN npm install
-RUN npm run prod
+RUN npm run build
 
 #RUN php artisan migrate:fresh --seed
 
