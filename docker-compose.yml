@@ -8,7 +8,7 @@ services:
         docker.ciber-egibide.eu -> http://app:80,
       CLIENT_MAX_BODY_SIZE: 1024M
       SERVER_NAMES_HASH_BUCKET_SIZE: 1024
-      STAGE: local
+      STAGE: ${HTTPS_PORTAL_MODE}
     volumes:
       - https-portal_certs:/var/lib/https-portal
     ports:
