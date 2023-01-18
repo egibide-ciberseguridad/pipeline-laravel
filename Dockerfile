@@ -17,8 +17,6 @@ USER root
 WORKDIR /var/www/html
 
 RUN apt update && apt install -y \
-        nodejs \
-        npm \
         libpng-dev \
         zlib1g-dev \
         libxml2-dev \
@@ -34,6 +32,10 @@ RUN apt update && apt install -y \
     && docker-php-ext-install opcache \
     && docker-php-ext-install zip \
     && docker-php-source delete
+
+# Instalar NodeJS: https://www.linuxcapable.com/how-to-install-node-js-14-lts-16-npm-on-debian-11-bullseye/#Install_NodeJS_14_LTS_from_NodeSource
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs
 
 COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 
