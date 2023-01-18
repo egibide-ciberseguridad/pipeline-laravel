@@ -3,7 +3,7 @@ ARG PHP_VERSION
 # https://stackoverflow.com/a/69948610/14378620
 FROM alpine/git:latest
 WORKDIR /clone-workspace
-RUN git clone https://github.com/egibide-ciberseguridad/laravel-blog.git
+RUN git clone https://github.com/egibide-ciberseguridad/blog.git laravel-blog
 
 # https://shouts.dev/dockerize-a-laravel-app-with-apache-mariadb#step1
 FROM php:${PHP_VERSION}-apache
