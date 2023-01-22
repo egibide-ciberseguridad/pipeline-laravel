@@ -5,7 +5,7 @@ services:
     image: steveltn/https-portal:${HTTPS_PORTAL_VERSION}
     environment:
       DOMAINS: >
-        docker.ciber-egibide.eu -> http://app:80,
+        ${HTTPS_PORTAL_HOSTNAME} -> http://app:80,
       CLIENT_MAX_BODY_SIZE: 1024M
       SERVER_NAMES_HASH_BUCKET_SIZE: 1024
       STAGE: ${HTTPS_PORTAL_MODE}

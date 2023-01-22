@@ -1,45 +1,54 @@
+#!make
+
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+else
+$(error No se encuentra el fichero .env)
+endif
+
 help:
 	@echo Opciones:
-	@echo -------------------
+	@echo ---------------------------------------
 	@echo start / stop / restart
 	@echo build
 	@echo logs
 	@echo workspace
-	@echo seed
+	@echo db
 	@echo stats
 	@echo clean
-	@echo -------------------
+	@echo ---------------------------------------
+
+_urls:
+	${info }
+	@echo ---------------------------------------
+	@echo [Blog] https://${HTTPS_PORTAL_HOSTNAME}
+	@echo ---------------------------------------
 
 _start-command:
-	@docker-compose up -d --remove-orphans
+	@docker compose up -d --remove-orphans
 
 start: _start-command _urls
 
 stop:
-	@docker-compose stop
+	@docker compose stop
 
 restart: stop start
 
 build:
-	@docker-compose build
+	@docker compose build
 
 logs:
-	@docker-compose logs app
+	@docker compose logs app
 
 workspace:
-	@docker-compose exec app /bin/bash
+	@docker compose exec app /bin/bash
 
-seed:
-	@docker-compose exec app php artisan migrate:fresh --seed
+db:
+	@docker compose exec app php artisan migrate:fresh
 
 stats:
 	@docker stats
 
 clean:
-	@docker-compose down -v --remove-orphans
-
-_urls:
-	${info }
-	@echo -------------------
-	@echo [laravel-blog] http://localhost:8000
-	@echo -------------------
+	@docker compose down -v --remove-orphans
